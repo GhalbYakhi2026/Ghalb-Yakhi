@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>قلب یخی | Ghalb Yakhi</title>
+
+
+<style>
+
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma,sans-serif;
+
+}
+
+
+
+body{
+
+min-height:100vh;
+
+background:
+linear-gradient(135deg,#07111d,#142e58,#5125a8);
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+
+
+/* نورهای پس زمینه */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+width:450px;
+
+height:450px;
+
+border-radius:50%;
+
+background:#00d9ff55;
+
+filter:blur(140px);
+
+top:-150px;
+
+left:-150px;
+
+animation:lightOne 9s infinite alternate;
+
+z-index:-2;
+
+}
+
+
+
+body::after{
+
+content:"";
+
+position:fixed;
+
+width:450px;
+
+height:450px;
+
+border-radius:50%;
+
+background:#814cff55;
+
+filter:blur(140px);
+
+bottom:-150px;
+
+right:-150px;
+
+animation:lightTwo 9s infinite alternate;
+
+z-index:-2;
+
+}
+
+
+
+@keyframes lightOne{
+
+from{
+
+transform:translate(0,0);
+
+}
+
+to{
+
+transform:translate(170px,120px);
+
+}
+
+}
+
+
+
+@keyframes lightTwo{
+
+from{
+
+transform:translate(0,0);
+
+}
+
+to{
+
+transform:translate(-170px,-120px);
+
+}
+
+}
+
+
+
+/* برف */
+
+.snow{
+
+position:fixed;
+
+top:-20px;
+
+color:white;
+
+pointer-events:none;
+
+z-index:-1;
+
+animation:snowMove linear infinite;
+
+}
+
+
+
+@keyframes snowMove{
+
+to{
+
+transform:translateY(110vh) rotate(360deg);
+
+}
+
+}
+
+
+
+
+/* منوی بالا */
+
+.menuBtn{
+
+position:fixed;
+
+top:18px;
+
+right:18px;
+
+width:55px;
+
+height:55px;
+
+border-radius:18px;
+
+background:#ffffff18;
+
+border:1px solid #ffffff30;
+
+backdrop-filter:blur(20px);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:28px;
+
+cursor:pointer;
+
+z-index:999;
+
+transition:.3s;
+
+}
+
+
+
+.menuBtn:hover{
+
+transform:scale(1.08);
+
+}
+
+
+
+/* منوی کناری */
+
+.sideMenu{
+
+position:fixed;
+
+right:-330px;
+
+top:0;
+
+width:300px;
+
+height:100%;
+
+padding:20px;
+
+background:#101a33ee;
+
+backdrop-filter:blur(25px);
+
+z-index:1000;
+
+transition:.45s;
+
+border-left:1px solid #ffffff20;
+
+}
+
+
+
+.sideMenu.active{
+
+right:0;
+
+}
+
+
+
+.closeBtn{
+
+padding:14px;
+
+border-radius:18px;
+
+background:#ffffff15;
+
+text-align:center;
+
+cursor:pointer;
+
+margin-bottom:20px;
+
+}
+
+
+
+.menuTitle{
+
+font-size:26px;
+
+text-align:center;
+
+margin-bottom:25px;
+
+}
+
+
+
+.menuItem{
+
+background:#ffffff12;
+
+padding:14px;
+
+border-radius:18px;
+
+margin-bottom:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+
+
+.menuItem:hover{
+
+background:#ffffff25;
+
+transform:translateX(-7px);
+
+}
+.page{
+
+display:none;
+
+min-height:100vh;
+
+padding:75px 15px;
+
+align-items:center;
+
+justify-content:center;
+
+animation:pageShow .5s ease;
+
+}
+
+
+
+.page.active{
+
+display:flex;
+
+}
+
+
+
+@keyframes pageShow{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+
+
+.card{
+
+width:92%;
+
+max-width:760px;
+
+padding:28px;
+
+border-radius:30px;
+
+background:#ffffff14;
+
+backdrop-filter:blur(25px);
+
+border:1px solid #ffffff30;
+
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+text-align:center;
+
+overflow:hidden;
+
+}
+
+
+
+
+
+/* لوگو */
+
+.logo{
+
+width:135px;
+
+height:135px;
+
+margin:0 auto 18px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:65px;
+
+background:linear-gradient(145deg,#fff,#6beaff,#814cff);
+
+box-shadow:
+
+0 0 30px #00d9ff,
+
+0 0 60px #814cff;
+
+animation:logoFloat 3s infinite ease-in-out;
+
+}
+
+
+
+@keyframes logoFloat{
+
+0%,100%{
+
+transform:translateY(0) rotate(0);
+
+}
+
+50%{
+
+transform:translateY(-12px) rotate(7deg);
+
+}
+
+}
+
+
+
+
+
+h1{
+
+font-size:40px;
+
+margin-bottom:15px;
+
+word-break:break-word;
+
+background:linear-gradient(90deg,#fff,#7eeaff);
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+}
+
+
+
+.text{
+
+font-size:17px;
+
+line-height:1.9;
+
+color:#e5efff;
+
+margin-bottom:20px;
+
+}
+
+
+
+
+
+/* دکمه */
+
+.btn{
+
+display:inline-block;
+
+max-width:100%;
+
+padding:13px 35px;
+
+border-radius:35px;
+
+background:linear-gradient(45deg,#00d9ff,#814cff);
+
+color:white;
+
+text-decoration:none;
+
+border:none;
+
+box-shadow:0 8px 20px rgba(0,217,255,.2);
+
+transition:.3s;
+
+overflow:hidden;
+
+}
+
+
+
+.btn:hover{
+
+transform:scale(1.05);
+
+}
+
+
+
+
+
+/* بازشو */
+
+.dropBox{
+
+margin:12px 0;
+
+padding:15px;
+
+border-radius:20px;
+
+background:#ffffff12;
+
+border:1px solid #ffffff20;
+
+cursor:pointer;
+
+text-align:right;
+
+overflow:hidden;
+
+transition:.3s;
+
+}
+
+
+
+.dropBox:hover{
+
+background:#ffffff22;
+
+}
+
+
+
+.dropTitle{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+
+
+.arrow{
+
+transition:.3s;
+
+}
+
+
+
+.dropBox.open .arrow{
+
+transform:rotate(180deg);
+
+}
+
+
+
+.dropContent{
+
+max-height:0;
+
+opacity:0;
+
+overflow:hidden;
+
+transition:.5s;
+
+font-size:15px;
+
+line-height:1.9;
+
+color:#dcecff;
+
+}
+
+
+
+.dropBox.open .dropContent{
+
+max-height:450px;
+
+opacity:1;
+
+padding-top:15px;
+
+}
+
+
+
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<div class="menuBtn" onclick="toggleMenu()">
+
+☰
+
+</div>
+
+
+
+
+<div class="sideMenu" id="menu">
+
+
+<div class="closeBtn" onclick="toggleMenu()">
+
+✕ بستن
+
+</div>
+
+
+
+<div class="menuTitle">
+
+❄️ قلب یخی
+
+</div>
+
+
+
+<div class="menuItem" onclick="showPage('home')">
+
+🏠 صفحه اصلی
+
+</div>
+
+
+<div class="menuItem" onclick="showPage('features')">
+
+⚡ قابلیت‌های ربات
+
+</div>
+
+
+<div class="menuItem" onclick="showPage('add')">
+
+➕ افزودن به گروه
+
+</div>
+
+
+<div class="menuItem" onclick="showPage('channel')">
+
+📢 کانال رسمی
+
+</div>
+
+
+<div class="menuItem" onclick="showPage('suggest')">
+
+💡 پیشنهادات
+
+</div>
+
+
+<div class="menuItem" onclick="showPage('support')">
+
+🛠 پشتیبانی
+
+</div>
+
+
+<div class="menuItem" onclick="showPage('developer')">
+
+👨‍💻 توسعه‌دهنده
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+<div class="page active" id="home">
+
+
+<div class="card">
+
+
+<div class="logo">
+
+✦
+
+</div>
+
+
+<h1>
+
+قلب یخی
+
+</h1>
+
+
+<div class="text">
+
+ربات حرفه‌ای مدیریت گروه روبیکا ❄️
+
+<br>
+
+مدیریت، سرگرمی و امکانات کاربردی در یک ربات
+
+</div>
+
+
+
+
+<div class="dropBox" onclick="openDrop(this)">
+
+
+<div class="dropTitle">
+
+⚡ قابلیت‌های ربات
+
+<span class="arrow">▼</span>
+
+</div>
+
+
+
+<div class="dropContent">
+
+
+قلب یخی مجموعه‌ای از امکانات مدیریتی،
+اطلاعاتی و سرگرمی برای گروه‌هاست.
+
+
+<br><br>
+
+
+👮 مدیریت گروه
+
+<br>
+
+📊 اطلاعات کاربردی
+
+<br>
+
+🎲 سرگرمی
+
+<br>
+
+🤖 امکانات متنوع
+
+
+<br><br>
+
+
+برای دیدن لیست کامل قابلیت‌ها وارد بخش قابلیت‌های ربات شوید.
+
+
+</div>
+
+
+</div>
+<div class="dropBox" onclick="openDrop(this)">
+
+
+<div class="dropTitle">
+
+🚀 ورود به ربات
+
+<span class="arrow">▼</span>
+
+</div>
+
+
+
+<div class="dropContent">
+
+
+با اضافه کردن قلب یخی به گروه خودتون،
+می‌تونید از امکانات مدیریتی، سرگرمی و کاربردی ربات استفاده کنید. ❄️
+
+
+<br><br>
+
+
+قلب یخی ساخته شده تا مدیریت گروه‌ها راحت‌تر بشه و اعضای گروه تجربه بهتری داشته باشن.
+
+
+<br><br>
+
+
+<a class="btn" href="https://rubika.ir/GhalbYakhiBot">
+
+ورود به ربات
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="dropBox" onclick="openDrop(this)">
+
+
+<div class="dropTitle">
+
+📢 کانال رسمی قلب یخی
+
+<span class="arrow">▼</span>
+
+</div>
+
+
+
+<div class="dropContent">
+
+
+برای اطلاع از آخرین اخبار، بروزرسانی‌ها،
+قابلیت‌های جدید و تغییرات قلب یخی می‌تونید وارد کانال رسمی ما بشید. ✨
+
+
+<br><br>
+
+
+در کانال همراه شما هستیم تا جدیدترین اتفاقات ربات رو به اشتراک بذاریم.
+
+
+<br><br>
+
+
+<a class="btn" href="https://rubika.ir/GhalbYakhi2026">
+
+ورود به کانال
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="text">
+
+© 2026 Ghalb Yakhi. All Rights Reserved.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="page" id="features">
+
+
+<div class="card">
+
+
+<h1>
+
+⚡ قابلیت‌های قلب یخی
+
+</h1>
+
+
+
+<div class="text">
+
+
+👮 مدیریت گروه
+
+<br>
+
+• مدیریت کاربران
+
+<br>
+
+• مدیریت ادمین‌ها
+
+<br>
+
+• بن و رفع بن
+
+<br>
+
+• حذف پیام
+
+<br>
+
+• قفل لینک
+
+
+<br><br>
+
+
+📊 اطلاعات
+
+<br>
+
+• آیدی و اسم
+
+<br>
+
+• آمار ربات
+
+<br>
+
+• تاریخ و ساعت
+
+
+<br><br>
+
+
+🎲 سرگرمی
+
+<br>
+
+• جوک
+
+<br>
+
+• فکت
+
+<br>
+
+• داستان
+
+<br>
+
+• چیستان
+
+<br>
+
+• چالش
+
+<br>
+
+• شعر
+
+<br>
+
+• فال
+
+<br>
+
+• دانستنی‌ها
+
+<br>
+
+• سخن بزرگان
+
+
+<br><br>
+
+
+🤖 سایر قابلیت‌ها
+
+<br>
+
+• پیام‌های انگیزشی
+
+<br>
+
+• دعا و حدیث
+
+<br>
+
+• ضرب‌المثل
+
+<br>
+
+• خاطره
+
+<br>
+
+• پشتیبانی و بروزرسانی‌ها
+
+
+</div>
+
+
+
+<button class="btn" onclick="showPage('home')">
+
+⬅ برگشت
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="page" id="add">
+
+
+<div class="card">
+
+
+<h1>
+
+➕ افزودن به گروه
+
+</h1>
+
+
+
+<div class="text">
+
+
+می‌خواید قلب یخی رو به گروه خودتون اضافه کنید؟ 🤍
+
+
+<br><br>
+
+
+با اضافه کردن ربات، مدیریت گروه و سرگرمی اعضا راحت‌تر میشه.
+
+
+<br><br>
+
+
+برای شروع روی دکمه زیر بزنید.
+
+
+</div>
+
+
+
+<a class="btn" href="https://rubika.ir/GhalbYakhiBot">
+
+افزودن ربات
+
+</a>
+
+
+
+<br><br>
+
+
+
+<button class="btn" onclick="showPage('home')">
+
+⬅ برگشت
+
+</button>
+
+
+
+</div>
+
+
+</div>
+<div class="page" id="channel">
+
+
+<div class="card">
+
+
+<h1>
+
+📢 کانال رسمی
+
+</h1>
+
+
+
+<div class="text">
+
+
+برای باخبر شدن از آخرین اخبار، بروزرسانی‌ها و قابلیت‌های جدید قلب یخی می‌تونید عضو کانال رسمی ما بشید. ❄️
+
+
+<br><br>
+
+
+در کانال، اطلاعیه‌ها و تغییرات مهم ربات رو با شما به اشتراک می‌ذاریم.
+
+
+<br><br>
+
+
+<a class="btn" href="https://rubika.ir/GhalbYakhi2026">
+
+ورود به کانال
+
+</a>
+
+
+</div>
+
+
+
+<button class="btn" onclick="showPage('home')">
+
+⬅ برگشت
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="page" id="support">
+
+
+<div class="card">
+
+
+<h1>
+
+🛠 پشتیبانی
+
+</h1>
+
+
+
+<div class="text">
+
+
+اگر در استفاده از قلب یخی مشکلی داشتید یا سوالی درباره ربات دارید، می‌تونید با ما در ارتباط باشید. 🤝
+
+
+<br><br>
+
+
+همچنین اگر پیشنهادی برای بهتر شدن ربات دارید، خوشحال می‌شیم با ما در میان بذارید.
+
+
+<br><br>
+
+
+<a class="btn" href="https://rubika.ir/BurakYt">
+
+ارتباط با پشتیبانی
+
+</a>
+
+
+</div>
+
+
+
+<button class="btn" onclick="showPage('home')">
+
+⬅ برگشت
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="page" id="suggest">
+
+
+<div class="card">
+
+
+<h1>
+
+💡 پیشنهادات
+
+</h1>
+
+
+
+<div class="text">
+
+
+ایده‌های شما به بهتر شدن قلب یخی کمک می‌کنه. ❤️
+
+
+<br><br>
+
+
+اگر قابلیت جدیدی پیشنهاد دارید یا فکر می‌کنید چه چیزی می‌تونه تجربه کاربران رو بهتر کنه، می‌تونید با ما به اشتراک بذارید.
+
+
+<br><br>
+
+
+پیشنهادات بررسی می‌شن و ممکنه در بروزرسانی‌های آینده به ربات اضافه بشن. ✨
+
+
+</div>
+
+
+
+<a class="btn" href="https://rubika.ir/BurakYt">
+
+ارسال پیشنهاد
+
+</a>
+
+
+
+<br><br>
+
+
+
+<button class="btn" onclick="showPage('home')">
+
+⬅ برگشت
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="page" id="developer">
+
+
+<div class="card">
+
+
+<h1>
+
+👨‍💻 توسعه‌دهنده
+
+</h1>
+
+
+
+<div class="text">
+
+
+قلب یخی با هدف ساخت یک ربات ساده، کاربردی و دوست‌داشتنی برای کاربران روبیکا ساخته شده است. ❄️
+
+
+<br><br>
+
+
+هدف ما اینه که ربات همیشه بهتر بشه و امکانات جدیدی برای شما اضافه کنیم.
+
+
+<br><br>
+
+
+برای ارتباط با توسعه‌دهنده:
+
+</div>
+
+
+
+<a class="btn" href="https://rubika.ir/BurakYt">
+
+ارتباط
+
+</a>
+
+
+
+<br><br>
+
+
+
+<button class="btn" onclick="showPage('home')">
+
+⬅ برگشت
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<script>
+
+
+// باز و بسته شدن منو
+
+function toggleMenu(){
+
+document
+.getElementById("menu")
+.classList.toggle("active");
+
+}
+
+
+
+
+
+// تغییر صفحه
+
+function showPage(page){
+
+
+document
+.querySelectorAll(".page")
+.forEach(function(item){
+
+item.classList.remove("active");
+
+});
+
+
+
+document
+.getElementById(page)
+.classList.add("active");
+
+
+
+document
+.getElementById("menu")
+.classList.remove("active");
+
+
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+
+}
+
+
+
+
+
+// باز شدن بازشوها
+
+function openDrop(box){
+
+
+box.classList.toggle("open");
+
+
+}
+
+
+
+
+// ساخت برف
+
+for(let i=0;i<80;i++){
+
+
+let snow=document.createElement("div");
+
+
+snow.className="snow";
+
+
+snow.innerHTML="❄️";
+
+
+snow.style.left=Math.random()*100+"vw";
+
+
+snow.style.fontSize=(10+Math.random()*16)+"px";
+
+
+snow.style.animationDuration=(6+Math.random()*10)+"s";
+
+
+snow.style.animationDelay=Math.random()*8+"s";
+
+
+document.body.appendChild(snow);
+
+
+}
+
+
+
+</script>
+
+
+</body>
+
+</html>
